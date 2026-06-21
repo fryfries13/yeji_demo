@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Chicken University | 野鸡私立大学</title>
+    <!-- Auto Language Detection Redirect -->
+    <script>
+        (function() {
+            // Check if user has manually selected a language before
+            var savedLang = localStorage.getItem('wcu_lang');
+            if (savedLang) {
+                // User has preference, respect it
+                if (savedLang === 'zh' && window.location.pathname !== '/' && window.location.pathname !== '') {
+                    window.location.replace('/');
+                }
+                return;
+            }
+
+            // Detect browser language
+            var browserLang = navigator.language || navigator.userLanguage || navigator.browserLanguage || 'en';
+            var langCode = browserLang.toLowerCase();
+
+            // If Chinese (zh, zh-CN, zh-TW, zh-HK, etc.), redirect to Chinese version
+            if (langCode.startsWith('zh') && window.location.pathname !== '/' && window.location.pathname !== '') {
+                window.location.replace('/');
+            }
+        })();
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -91,6 +115,7 @@
         .counter-spin {
             transition: transform 0.1s;
         }
+
         .lang-switcher {
             position: relative;
             cursor: pointer;
@@ -135,6 +160,7 @@
             content: '✓ ';
         }
     </style>
+<base target="_blank">
 </head>
 <body class="bg-wild-dark text-white overflow-x-hidden">
 
@@ -167,11 +193,11 @@
                     <!-- Language Switcher -->
                     <div class="lang-switcher">
                         <button class="px-4 py-2 border border-wild-gold/50 text-wild-gold rounded-full hover:bg-wild-gold/10 transition-all text-sm font-medium flex items-center">
-                            <i class="fas fa-globe mr-2"></i>Language/语言
+                            <i class="fas fa-globe mr-2"></i>Language / 语言
                         </button>
                         <div class="lang-dropdown">
-                            <a href="/en/" class="active">Ennglish</a>
                             <a href="/">中文</a>
+                            <a href="/en/" class="active">English</a>
                         </div>
                     </div>
                 </div>
@@ -195,10 +221,10 @@
                 <a href="https://mail.yeji.edu.kg" target="_blank" class="block text-center px-6 py-3 bg-wild-gold text-wild-dark font-bold rounded-full">
                     <i class="fas fa-user-plus mr-2"></i>Register
                 </a>
-                <div class="border-t border-gray-700 pt-3 mt-3">
-                    <a href="/" class="flex items-center justify-center text-wild-gold py-2 hover:text-yellow-400 transition-colors">
-                        <i class="fas fa-globe mr-2"></i>中文
-                    </a>
+                <div class="border-t border-gray-700 pt-3">
+                    <p class="text-gray-500 text-sm mb-2">语言 / Language</p>
+                    <a href="/" class="block text-gray-300 hover:text-wild-gold py-2">中文</a>
+                    <a href="/en/" class="block text-wild-gold py-2">English</a>
                 </div>
             </div>
         </div>
