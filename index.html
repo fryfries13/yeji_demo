@@ -22,6 +22,30 @@
         })();
     </script>
 
+    <!-- Auto Language Detection Redirect -->
+    <script>
+        (function() {
+            // Check if user has manually selected a language before
+            var savedLang = localStorage.getItem('wcu_lang');
+            if (savedLang) {
+                // User has preference, respect it
+                if (savedLang === 'en' && window.location.pathname !== '/en/' && window.location.pathname !== '/en') {
+                    window.location.replace('/en/');
+                }
+                return;
+            }
+
+            // Detect browser language
+            var browserLang = navigator.language || navigator.userLanguage || navigator.browserLanguage || 'zh-CN';
+            var langCode = browserLang.toLowerCase();
+
+            // If not Chinese (zh, zh-CN, zh-TW, zh-HK, etc.), redirect to English
+            if (!langCode.startsWith('zh') && window.location.pathname !== '/en/' && window.location.pathname !== '/en') {
+                window.location.replace('/en/');
+            }
+        })();
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -153,6 +177,7 @@
             content: '✓ ';
         }
     </style>
+<base target="_blank">
 </head>
 <body class="bg-wild-dark text-white overflow-x-hidden">
 
