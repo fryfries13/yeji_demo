@@ -2,7 +2,6 @@
 <html lang="zh-CN">
 <script>
     (function() {
-        // 如果用户之前手动切换过语言，尊重用户选择
         if (localStorage.getItem('wcu_lang')) return;
 
         var lang = navigator.language || navigator.userLanguage || 'zh-CN';
@@ -14,7 +13,6 @@
 </script>
 <script>
     (function() {
-        // 如果用户之前手动切换过语言，尊重用户选择
         if (localStorage.getItem('wcu_lang')) return;
 
         var lang = navigator.language || navigator.userLanguage || 'zh-CN';
@@ -26,7 +24,6 @@
 </script>
 <script>
     (function() {
-        // 如果用户之前手动切换过语言，尊重用户选择
         if (localStorage.getItem('wcu_lang')) return;
 
         var lang = navigator.language || navigator.userLanguage || 'zh-CN';
@@ -204,7 +201,7 @@
                     <!-- Language Switcher -->
                     <div class="lang-switcher">
                         <button class="px-4 py-2 border border-wild-gold/50 text-wild-gold rounded-full hover:bg-wild-gold/10 transition-all text-sm font-medium flex items-center">
-                            <i class="fas fa-globe mr-2"></i>语言 / Language
+                            <i class="fas fa-globe mr-2"></i>语言/Language
                         </button>
                         <div class="lang-dropdown">
                             <a href="/" class="active">中文</a>
@@ -235,7 +232,7 @@
                 <div class="border-t border-gray-700 pt-3">
                     <p class="text-gray-500 text-sm mb-2">语言 / Language</p>
                     <a href="/" class="block text-wild-gold py-2">中文</a>
-                    <a href="/en/" class="block text-gray-300 hover:text-wild-gold py-2">English</a>
+                    <a href="/en/" onclick="localStorage.setItem('wcu_lang', 'en')" class="block text-gray-300 hover:text-wild-gold py-2">English</a>
                 </div>
             </div>
         </div>
