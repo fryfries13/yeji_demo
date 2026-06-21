@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+    (function() {
+        // 如果用户之前手动切换过语言，尊重用户选择
+        if (localStorage.getItem('wcu_lang')) return;
+
+        var lang = navigator.language || navigator.userLanguage || 'en';
+        if (lang.toLowerCase().startsWith('zh') && (location.pathname === '/en/' || location.pathname === '/en')) {
+            localStorage.setItem('wcu_lang', 'zh');
+            location.replace('/');
+        }
+    })();
+</script>
+<script>
+    (function() {
+        // 如果用户之前手动切换过语言，尊重用户选择
+        if (localStorage.getItem('wcu_lang')) return;
+
+        var lang = navigator.language || navigator.userLanguage || 'en';
+        if (lang.toLowerCase().startsWith('zh') && (location.pathname === '/en/' || location.pathname === '/en')) {
+            localStorage.setItem('wcu_lang', 'zh');
+            location.replace('/');
+        }
+    })();
+</script>
+<script>
+    (function() {
+        // 如果用户之前手动切换过语言，尊重用户选择
+        if (localStorage.getItem('wcu_lang')) return;
+
+        var lang = navigator.language || navigator.userLanguage || 'en';
+        if (lang.toLowerCase().startsWith('zh') && (location.pathname === '/en/' || location.pathname === '/en')) {
+            localStorage.setItem('wcu_lang', 'zh');
+            location.replace('/');
+        }
+    })();
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Chicken University | 野鸡私立大学</title>
-    <!-- Auto Language Detection Redirect -->
-    <script>
-        (function() {
-            // Check if user has manually selected a language before
-            var savedLang = localStorage.getItem('wcu_lang');
-            if (savedLang) {
-                // User has preference, respect it
-                if (savedLang === 'zh' && window.location.pathname !== '/' && window.location.pathname !== '') {
-                    window.location.replace('/');
-                }
-                return;
-            }
-
-            // Detect browser language
-            var browserLang = navigator.language || navigator.userLanguage || navigator.browserLanguage || 'en';
-            var langCode = browserLang.toLowerCase();
-
-            // If Chinese (zh, zh-CN, zh-TW, zh-HK, etc.), redirect to Chinese version
-            if (langCode.startsWith('zh') && window.location.pathname !== '/' && window.location.pathname !== '') {
-                window.location.replace('/');
-            }
-        })();
-    </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -196,8 +208,8 @@
                             <i class="fas fa-globe mr-2"></i>Language / 语言
                         </button>
                         <div class="lang-dropdown">
-                            <a href="/" target="_blank">中文</a>
-                            <a href="/en/" target="_blank" class="active">English</a>
+                            <a href="/">中文</a>
+                            <a href="/en/" class="active">English</a>
                         </div>
                     </div>
                 </div>
@@ -223,8 +235,8 @@
                 </a>
                 <div class="border-t border-gray-700 pt-3">
                     <p class="text-gray-500 text-sm mb-2">语言 / Language</p>
-                    <a href="/" target="_blank" class="block text-gray-300 hover:text-wild-gold py-2">中文</a>
-                    <a href="/en/" target="_blank" class="block text-wild-gold py-2">English</a>
+                    <a href="/" class="block text-gray-300 hover:text-wild-gold py-2">中文</a>
+                    <a href="/en/" class="block text-wild-gold py-2">English</a>
                 </div>
             </div>
         </div>
