@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<script>
+    if (navigator.language && !navigator.language.startsWith('zh') && location.pathname === '/') {
+        location.replace('/en/');
+    }
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
