@@ -5,26 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>野鸡私立大学 | Wild Chicken Private University</title>
 
-    <!-- Language Detection Redirect -->
+    <!-- Language Preference Hint (non-intrusive) -->
     <script>
         (function() {
-            // Check if user has manually selected a language before
             var savedLang = localStorage.getItem('wcu_lang');
-            if (savedLang) {
-                // User has preference, respect it
-                if (savedLang === 'en' && window.location.pathname !== '/en/' && window.location.pathname !== '/en') {
-                    window.location.replace('/en/');
-                }
-                return;
-            }
+            if (savedLang) return;
 
-            // Detect browser language
             var browserLang = navigator.language || navigator.userLanguage || navigator.browserLanguage || 'zh-CN';
             var langCode = browserLang.toLowerCase();
 
-            // If not Chinese (zh, zh-CN, zh-TW, zh-HK, etc.), redirect to English
-            if (!langCode.startsWith('zh') && window.location.pathname !== '/en/' && window.location.pathname !== '/en') {
-                window.location.replace('/en/');
+            // Only show hint once, don't force redirect
+            if (!langCode.startsWith('zh') && !sessionStorage.getItem('wcu_hint_shown')) {
+                sessionStorage.setItem('wcu_hint_shown', '1');
+                // Could show a subtle banner here if desired
             }
         })();
     </script>
@@ -190,6 +183,11 @@
                     </a>
 
                     <!-- Language Switcher -->
+                    <a href="/en/" class="px-4 py-2 border border-wild-gold/50 text-wild-gold rounded-full hover:bg-wild-gold/10 transition-all text-sm font-medium flex items-center">
+                        <i class="fas fa-globe mr-2"></i>English
+                    </a>
+
+                    <!-- Language Switcher -->
                     <div class="lang-switcher">
                         <button class="px-4 py-2 border border-wild-gold/50 text-wild-gold rounded-full hover:bg-wild-gold/10 transition-all text-sm font-medium flex items-center">
                             <i class="fas fa-globe mr-2"></i>中文
@@ -220,6 +218,11 @@
                 <a href="https://mail.yeji.edu.kg" target="_blank" class="block text-center px-6 py-3 bg-wild-gold text-wild-dark font-bold rounded-full">
                     <i class="fas fa-user-plus mr-2"></i>注册
                 </a>
+                <div class="border-t border-gray-700 pt-3 mt-3">
+                    <a href="/en/" class="flex items-center justify-center text-wild-gold py-2 hover:text-yellow-400 transition-colors">
+                        <i class="fas fa-globe mr-2"></i>English
+                    </a>
+                </div>
                 <div class="border-t border-gray-700 pt-3">
                     <p class="text-gray-500 text-sm mb-2">语言 / Language</p>
                     <a href="/" class="block text-wild-gold py-2">中文</a>
